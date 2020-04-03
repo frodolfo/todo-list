@@ -1,0 +1,9 @@
+.list-container {
+    width: 800px;
+    margin: 20px auto;
+    text-align: left;
+}
+
+.highlighted {
+    background-color: darkkhaki;
+}
