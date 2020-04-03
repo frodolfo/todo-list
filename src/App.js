@@ -25,22 +25,27 @@ function App() {
       isHighlighted: true
     }];
 
-  const onHighlightHandler = (status) => {
-    let t;
+  const onActiveHandler = (e) => {
+    let index = +e.target.dataset.index;
 
-    for (let i = 0; i < todos.length; i++) {
-      t = todos[i];
-      if (t.isActive) {
-        t.isHighlighted = status;
-      }
-      todos[i] = t;
-    }
+    todos[index].isActive = !todos[index].isActive;
+
+    return todos;
+  };
+  
+  const onHighlightHandler = (e) => {
+    let index = +e.target.dataset.index;
+
+    todos[index].isHighlighted = !todos[index].isHighlighted;
+
+    return todos;
   };
 
   return (
     <div className="App">
       <TodoList 
         todos={ todos }
+        onActive={ onActiveHandler }
         onHighlight={ onHighlightHandler }></TodoList>
     </div>
   );

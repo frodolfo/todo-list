@@ -4,6 +4,26 @@
     text-align: left;
 }
 
+.list-container ul {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.list-container ul li {
+    padding: 6px;
+    margin-left: 0;
+    list-style-type: none;
+}
+
+button {
+    height: 30px;
+    margin-right: 10px;
+}
+
 .highlighted {
     background-color: darkkhaki;
+}
+
+.inactive {
+    text-decoration: line-through;
 }
