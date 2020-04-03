@@ -6,8 +6,6 @@ class TodoList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            highlightedItems: props.todos.map(t => t.isHighlighted),
-            activeTodos: [],
             allTodos: []
         };
         this.onHighlight = this.props.onHighlight;
@@ -25,9 +23,7 @@ class TodoList extends Component {
     }
 
     componentDidMount() {
-        const todos = this.props.todos;
-        this.setState({ allTodos: todos });
-        this.setState({ activeTodos: todos.filter(t => t.isActive) });
+        this.setState({ allTodos: this.props.todos });
     }
 
     render() {
@@ -35,10 +31,9 @@ class TodoList extends Component {
             <div className="list-container">
                 <h1>To-Do List</h1>
                 <ul>
-                {/* { this.state.activeTodos.map((t, idx) => ( */}
                 { this.state.allTodos.map((t, idx) => (
                     <li className={ t.isHighlighted ? 'highlighted' : '' } key={ idx }>
-                        <button data-index={ idx } onClick={ this.activeHandler }>{ t.isActive ? 'Set Inactive' : 'Set Active' }</button> 
+                        <button data-index={ idx } onClick={ this.activeHandler }>{ t.isActive ? 'Deactivate' : 'Activate' }</button> 
                         <button data-index={ idx } onClick={ this.highlightHandler }>{ t.isHighlighted ? 'Unhighlight' : 'Highlight' }</button>
                         <span className={ !t.isActive ? 'inactive' : '' }>{ t.task }</span></li>
                 ))}
